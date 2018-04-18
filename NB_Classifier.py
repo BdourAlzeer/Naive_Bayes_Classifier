@@ -124,14 +124,7 @@ def naiveClassifier(rows):
     for line in rows:
         result_yes = CaluluatePriorProbability(rows, 'yes')
         result_no = CaluluatePriorProbability(rows, 'no')
-        for p in continous_params:
-            param_val = line[p]
-            result_yes =  result_yes * calculateConitinousProbability(p, param_val, 'yes')
-            result_no = result_no * calculateConitinousProbability(p, param_val, 'no')
-        for p1 in discrete_params:
-            param_val = line[p1]
-            result_yes = result_yes * discrete_probabilities[p1][param_val]['yes']
-            result_no = result_no * discrete_probabilities[p1][param_val]['no']
+    ////////////////////////////
 
         if float(result_yes) > float(result_no) and (line['GP_greater_than_0'] == 'yes'):
             accuracy += 1
